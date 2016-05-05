@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Ramez
+  email: rmz@gmail.com
+  date_of_birth: 1990-04-30
+  gender: 1
+  prof_pic: MyString
+  password_digest: <%= BCrypt::Password.create('secret') %>
+
+two:
+  name: Amir
+  email: amir@yahoo.com
+  date_of_birth: 1993-04-30
+  gender: 1
+  prof_pic: MyString
+  password_digest: <%= BCrypt::Password.create('secret') %>

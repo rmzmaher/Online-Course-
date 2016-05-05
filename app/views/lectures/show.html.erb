@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Content:</strong>
+  <%= @lecture.content.html_safe %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <% if @lecture.file.file %>
+  <%= link_to "Download Attachement ", download_path(@lecture.id.to_s) ,:class => 'btn btn-default btn-large'  %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @lecture.course.title %>
+</p>
+<%= link_to 'like', like_lecture_path(@lecture) , method: :put %> <%= @lecture.get_likes.size %>|
+<%= link_to 'dislike', dislike_lecture_path(@lecture) , method: :put   %> <%= @lecture.get_dislikes.size %> |
+
+<%= link_to 'Edit', edit_lecture_path(@lecture) %> |
+<%= link_to 'Back', lectures_path(@lecture.course) %>
+<div class="row">
+	<div class="span8 offset2">
+		<div class="well">
+<H4>Comments</H4>
+<div id="comments">
+	<%= render :partial => @lecture.comments %>
+</div>
+<%= simple_form_for [@lecture, Comment.new] do |f| %>
+		<p>
+			<%= f.hidden_field :lecture_id, :value => @lecture.id %>
+			<%= f.input :body, :label => "New Comment", as: :text, input_html: { rows: "3" } %>
+		</p>
+
+		<p><%= f.submit "Add Comment", class: "btn btn-primary" %></p>
+<% end %>	
+		</div>
+	</div>
+</div>

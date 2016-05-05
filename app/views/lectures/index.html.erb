@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Lectures</h1>
+
+<table class="table table-bordered table-hover" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>Lecture</th>
+      <th>Course</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+<%= @lecture %>
+  <tbody>
+    <% count=0%>
+    <% @lectures.each do |lecture| %>
+      <tr>
+        <td>Lecture Number <%= count=count+1 %></td>
+        <td><%= lecture.course.title %></td>
+        <td><%= link_to 'Show', lecture %></td>
+        <% @courses.each do |course| %>
+            <% if lecture.course.id == course.id  %>
+                <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+                <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

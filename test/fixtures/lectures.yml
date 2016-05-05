@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: content of lecture test 1
+  file: /attachment/2.jpg
+  course_id: 1
+
+two:
+  content: content of lecture test 2
+  file: /attachment/2.jpg
+  course_id: 2

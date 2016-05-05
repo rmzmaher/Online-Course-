@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CourseOnline</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+<style>
+        body { padding-top: 70px;
+                padding-bottom: 30px;
+                padding-left: 20px;
+                padding-right: 20px;
+                                }
+        .profile-image {
+                
+                width: 42px;
+                height: 42px;
+                border: 1px solid #73AD21
+                }
+    </style>
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/landing-page.css">
+     </head>
+  <!--  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+    <script src="/bootstrap/js/bootstrap-datepicker.js"></script>
+<body>
+<nav class="navbar-default bg-info navbar-fixed-top">
+
+    <div class="container-fluid" >
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"> Online Courses </a>
+        </div>
+
+        <ul class="nav navbar-nav">
+	        <li><%= link_to "Home",root_url %></li>
+<% if current_user %>
+	        <li><%= link_to 'My Courses' , courses_path %></li>
+	        <li><%= link_to 'New Course', new_course_path %></li>
+            <li><%= link_to 'New Lecture', new_lecture_path %></li>
+      	</ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Update Profile', edit_user_path(current_user) %></li>
+        	<li><br>Hello <%= current_user.email %></li>
+        	<li><%= image_tag current_user.prof_pic , :class => 'profile-image img-circle'  %></li>
+        	<li><!-- <span class="glyphicon glyphicon-log-in"></span> --><%= link_to "Log Out",logout_path %></li>
+      	</ul>
+	<% else %>
+		</ul>
+		 <ul class="nav navbar-nav navbar-right">
+			<li><%= link_to "Sign UP",signup_path %></li>
+			<li><%= link_to "Log In",login_path  %></li>
+		</ul>
+	<% end %>
+		</div>
+	</nav>
+
+</div>
+<%= yield %>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <%= link_to "Home",root_url %>
+                        </li>
+                    <!--   <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#services">Services</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">Contact</a>
+                        </li> -->
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; Online Course. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+	
+
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
